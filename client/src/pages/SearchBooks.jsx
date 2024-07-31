@@ -8,7 +8,7 @@ import {
   Row
 } from 'react-bootstrap';
 // Import the methods to save a book
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import { SAVE_BOOK } from '../utils/mutations';
 
 import Auth from '../utils/auth';

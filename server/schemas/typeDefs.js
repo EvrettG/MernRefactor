@@ -3,12 +3,11 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
-
+    savedBooks: [Book]
     bookCount: Int
-    savedBooks: [Book]!
     }
 
-    Book{
+    type Book {
     bookId: ID
     authors: [String]
     description: String
@@ -32,8 +31,6 @@ const typeDefs = `
     }
 
     type Query {
-    users: [User]
-    user(username: String!): User
     me: User
     }
 
@@ -43,22 +40,6 @@ const typeDefs = `
     saveBook(book: saveBookInput): User
     removeBook(bookId: ID): User
     }
-
 `;
-// Check if "password: String" required or not
 
-// Change BookId: ID to String
-
-// Possible shange books to allow a string of authors with,
-//    type: Author {
-//    name: String
-// }
-// type: Books {
-//    bookId: String
-//    authors: [Author]
-//    description: String
-//    title: String
-// }
-
-// Check if savedBooks needs to be added to query
 module.exports = typeDefs;
