@@ -39,17 +39,17 @@ const resolvers = {
             return { token, user };
           },
 
-        saveBook: async (parent, { input}, context) =>{
+          saveBook: async (parent, { book }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { savedBooks: input } },
+                    { $addToSet: { savedBooks: book } }, // Ensure 'book' is being passed here
                     { new: true, runValidators: true }
-                ).populate('savedBooks');;
+                ).populate('savedBooks');
                 return updatedUser;
             } 
-            throw AuthenticationError;
-          },
+            throw new Error('Authentication required');
+        },
 
           removeBook: async (parent, {bookId}, context) => {
             if (context.user) {
