@@ -31,7 +31,7 @@ export const SAVE_BOOK = gql`
             _id
             username
             email
-            bookCount
+
             savedBooks {
                 bookId        
                 authors
@@ -44,6 +44,8 @@ export const SAVE_BOOK = gql`
     
     }
 `
+// bookCount ,removed from line 34
+
 // Same as above but removes a book
 export const REMOVE_BOOK = gql`
     mutation removeBook($bookId: ID!) {
